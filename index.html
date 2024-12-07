@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    .card img {
+        height: 300px;
+        object-fit: cover;
+    }
+
+    .card {
+        height: 350px;
+    }
+
+    .hidden {
+        display: none;
+    }
+
+    .main {
+        display: flex;
+        margin-bottom: 20px;
+    }
+
+    .para {
+        width: 500px;
+        margin-right: auto;
+    }
+
+    .image {
+        border-radius: 50px;
+        margin: auto;
+    }
+
+    section {
+        display: none;
+    }
+
+    .show {
+        display: block;
+    }
+
+    .row {
+        display: flex;
+        /* width: auto; */
+        box-sizing: border-box;
+        padding: 10px;
+    }
+
+    @media (max-width:800px) {
+        .main {
+            justify-content: center;
+            flex-direction: column;
+        }
+
+        .image {
+            width: 80%;
+            padding: 20px;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .para {
+            width: 90%;
+            font-size: medium;
+            margin-left: 10px;
+            padding: 10px;
+        }
+
+        .table {
+            font-size: medium;
+            margin-right: auto;
+        }
+
+    }
+</style>
+
+<body style="background-color: #393b3d;">
+    <nav class="navbar navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="index.html" style="color: #e2f514c8;">MS Movies</a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="index.html"
+                            style="color: #e2f514c8;">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-nowrap" href="#latestmovies" style="color: #e2f514c8;">Latest Movies</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#trending" style="color: #e2f514c8;">Trending</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#genre" style="color: #e2f514c8;">Genre</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-nowrap" href="contact.html" style="color: #e2f514c8;">Contact us</a>
+                    </li>
+                </ul>
+                <div class="container d-flex justify-content-end">
+                    <ul class="navbar-nav ml-auto">
+                        <li>
+                            <div class="ms-auto d-flex">
+                                <a class="nav-link" href="">🔍</a>
+
+                                <form class="d-flex" action="search-results.html" method="GET" role="search">
+                                    <input class="form-control me-2" type="search" name="query" placeholder="Search"
+                                        aria-label="Search">
+                                </form>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="ms-auto">
+                                <a class="nav-link" href="sign.html" style="color: #e2f514c8;">Sign in</a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        </div>
+    </nav>
+    <div id="carouselExample" class="carousel slide ">
+        <div class="carousel-inner">
+            <div class="carousel-item active ">
+                <img src="images/vishwam.png" class="d-block w-100" height="500vh" width="200vw" alt="...">
+            </div>
+            <div class="carousel-item">
+                <img src="images/35.png" class="d-block w-100" height="500vh" width="200vw" alt="...">
+            </div>
+            <div class="carousel-item">
+                <img src="images/jag.png" class="d-block w-100" height="500vh" width="200vw" alt="...">
+            </div>
+            <div class="carousel-item">
+                <img src="images/mr.png" class="d-block w-100" height="500vh" width="200vw" alt="...">
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+
+
+    <h1 class="my-4" id="latestmovies" style="color: #e2f514c8; margin-left: 20px;">Latest Movies </h1>
+
+    <div class="container mt-5">
+        <div id="cardCarousel" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                <!-- First carousel item with multiple cards -->
+                <div class="carousel-item active">
+                    <div class="d-flex justify-content-center">
+                        <div class="card me-3" style="width: 18rem;">
+                            <img src="images/dhoomam.png" class="card-img-top" alt="Card Image">
+                            <div class="card-body">
+                                <h5 class="card-title">Dhoomam</h5>
+                            </div>
+                        </div>
+                        <div class="card me-3" style="width: 18rem;">
+                            <img src="images/eagle.png" class="card-img-top" alt="Card Image ">
+                            <div class="card-body">
+                                <h5 class="card-title">Eagle</h5>
+                            </div>
+                        </div>
+                        <div class="card me-3" style="width: 18rem;">
+                            <img src="images/thantra.png" class="card-img-top" alt="Card Image">
+                            <div class="card-body">
+                                <h5 class="card-title">Thantra</h5>
+                            </div>
+                        </div>
+                        <div class="card me-3" style="width: 18rem;">
+                            <img src="images/rakshana.png" class="card-img-top" alt="Card Image">
+                            <div class="card-body">
+                                <h5 class="card-title">Rakshana</h5>
+                            </div>
+                        </div>
+                        <div class="card me-3" style="width: 18rem;">
+                            <img src="images/samjavargamana.png" class="card-img-top" alt="Card Image">
+                            <div class="card-body">
+                                <h5 class="card-title">Samajavaragamana</h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item active">
+                    <div class="d-flex justify-content-center">
+                        <div class="card me-3" style="width: 18rem;">
+                            <img src="images/viraji.png" class="card-img-top" alt="Card Image">
+                            <div class="card-body">
+                                <h5 class="card-title">Viraji</h5>
+                            </div>
+                        </div>
+                        <div class="card me-3">
+                            <img src="images/harom hara.png" class="card-img-top" alt="Card Image">
+                            <div class="card-body">
+                                <h5 class="card-title">Harom Hara</h5>
+                            </div>
+                        </div>
+                        <div class="card me-3" style="width: 18rem;">
+                            <img src="images/keeda cola.png" class="card-img-top" alt="Card Image">
+                            <div class="card-body">
+                                <h5 class="card-title">Keeda Cola</h5>
+                            </div>
+                        </div>
+                        <div class="card me-3" style="width: 18rem;">
+                            <img src="images/my dear.png" class="card-img-top" alt="Card Image">
+                            <div class="card-body">
+                                <h5 class="card-title">My Dear Donga</h5>
+                            </div>
+                        </div>
+                        <div class="card me-3" style="width: 18rem;">
+                            <img src="images/premalu.png" class="card-img-top" alt="Card Image">
+                            <div class="card-body">
+                                <h5 class="card-title">Premalu</h5>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <!-- Carousel controls -->
+            <button class="carousel-control-prev" type="button" data-bs-target="#cardCarousel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#cardCarousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+    </div>
+
+    <h1 class="my-4" id="trending" style="color: #e2f514c8; margin-left: 20px;">Trending</h1>
+
+    <div class="container mt-5">
+        <div id="cardCarousel" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+
+                <div class="carousel-item active">
+                    <div class="d-flex justify-content-center">
+                        <div class="card me-3" style="width: 18rem;">
+                            <img src="images/tillu 2.png" class="card-img-top" alt="Card Image">
+                            <div class="card-body ">
+                                <h5 class="card-title">Tillu 2</h5>
+                            </div>
+                        </div>
+                        <div class="card me-3" style="width: 18rem;">
+                            <img src="images/amaran1.png" class="card-img-top" alt="Card Image">
+                            <div class="card-body">
+                                <h5 class="card-title">Amaran</h5>
+                            </div>
+                        </div>
+                        <div class="card me-3" style="width: 18rem;">
+                            <img src="images/dev.png" class="card-img-top" alt="Card Image">
+                            <div class="card-body">
+                                <h5 class="card-title">Devara</h5>
+                            </div>
+                        </div>
+                        <div class="card me-3" style="width: 18rem;">
+                            <img src="images/g2.png" class="card-img-top" alt="Card Image">
+                            <div class="card-body">
+                                <h5 class="card-title">Geethanjali 2</h5>
+                            </div>
+                        </div>
+                        <div class="card me-3" style="width: 18rem;">
+                            <img src="images/garuda.png" class="card-img-top" alt="Card Image">
+                            <div class="card-body">
+                                <h5 class="card-title">Garuda Chp 1</h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="carousel-item">
+                    <div class="d-flex justify-content-center">
+                        <div class="card me-3" style="width: 18rem;">
+                            <img src="images/ginna.png" class="card-img-top" alt="Card Image">
+                            <div class="card-body">
+                                <h5 class="card-title">Ginna</h5>
+                            </div>
+                        </div>
+                        <div class="card me-3" style="width: 18rem;">
+                            <img src="images/kaa.png" class="card-img-top" alt="Card Image">
+                            <div class="card-body">
+                                <h5 class="card-title">Kaa</h5>
+                            </div>
+                        </div>
+                        <div class="card me-3" style="width: 18rem;">
+                            <img src="images/lb.png" class="card-img-top" alt="Card Image">
+                            <div class="card-body">
+                                <h5 class="card-title">Lucky Bhaskar</h5>
+                            </div>
+                        </div>
+                        <div class="card me-3" style="width: 18rem;">
+                            <img src="images/misbac.png" class="card-img-top" alt="Card Image">
+                            <div class="card-body">
+                                <h5 class="card-title">Mister Bacchan</h5>
+                            </div>
+                        </div>
+                        <div class="card me-3" style="width: 18rem;">
+                            <img src="images/viratap.png" class="card-img-top" alt="Card Image">
+                            <div class="card-body">
+                                <h5 class="card-title">Virata Parvam</h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample"
+                    data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExample"
+                    data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <h1 class="my-4" id="bollywood" style="color: #e2f514c8; margin-left: 20px;">Bollywood </h1>
+
+
+    <div class="container mt-5">
+        <div id="cardCarousel" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+
+                <div class="carousel-item active">
+                    <div class="d-flex justify-content-center">
+                        <div class="card me-3" style="width: 18rem;">
+
+                            <img src="images/b1.jpg" class="card-img-top " alt="Card Image">
+                            <div class="card-body">
+                                <h5 class="card-title">Auran mein kahan dun tha</h5>
+                            </div>
+                        </div>
+                        <div class="card me-3" style="width: 18rem;">
+                            <img src="images/b2.png" class="card-img-top " alt="Card Image">
+                            <div class="card-body">
+                                <h5 class="card-title">Tamasha</h5>
+                            </div>
+                        </div>
+                        <div class="card me-3" style="width: 18rem;">
+                            <img src="images/b3.png" class="card-img-top" alt="Card Image">
+                            <div class="card-body">
+                                <h5 class="card-title">Kabir Singh</h5>
+                            </div>
+                        </div>
+                        <div class="card me-3" style="width: 18rem;">
+                            <img src="images/b4.png" class="card-img-top" alt="Card Image">
+                            <div class="card-body">
+                                <h5 class="card-title">Singham</h5>
+                            </div>
+                        </div>
+                        <div class="card me-3" style="width: 18rem;">
+                            <img src="images/b5.png" class="card-img-top" alt="Card Image">
+                            <div class="card-body">
+                                <h5 class="card-title">Bade miyan Chote miyan</h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="carousel-item">
+                    <div class="d-flex justify-content-center">
+                        <div class="card me-3" style="width: 18rem;">
+                            <img src="images/b7.png" class="card-img-top" alt="Card Image">
+                            <div class="card-body">
+                                <h5 class="card-title">Tiger 3</h5>
+                            </div>
+                        </div>
+                        <div class="card me-3" style="width: 18rem;">
+                            <img src="images/b8.png" class="card-img-top" alt="Card Image">
+                            <div class="card-body">
+                                <h5 class="card-title">URI</h5>
+                            </div>
+                        </div>
+                        <div class="card me-3" style="width: 18rem;">
+                            <img src="images/b9.png" class="card-img-top" alt="Card Image">
+                            <div class="card-body">
+                                <h5 class="card-title">83</h5>
+                            </div>
+                        </div>
+                        <div class="card me-3" style="width: 18rem;">
+                            <img src="images/b10.png" class="card-img-top" alt="Card Image">
+                            <div class="card-body">
+                                <h5 class="card-title">Satyaprem ki Katha</h5>
+                            </div>
+                        </div>
+                        <div class="card me-3" style="width: 18rem;">
+                            <img src="images/b11.png" class="card-img-top" alt="Card Image">
+                            <div class="card-body">
+                                <h5 class="card-title">Kahaani 2</h5>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+    <section id="hero1" class="show">
+        <h1 style="color: #e2f514c8; margin-top: 10vh; margin-left: 20px;">Prabhas</h1>
+        <br>
+        <div class="main">
+
+            <div class="image">
+                <img src="images/prabha.png" alt="" width="400px" style="border-radius: 10px;">
+            </div>
+            <div class="para" style="color: #f4f4f4;">
+                <p>
+                    Prabhas, born as Uppalapati Venkata Suryanarayana Prabhas Raju, is a popular Indian actor known
+                    primarily for his work in Telugu cinema. He gained nationwide fame for his role as the protagonist
+                    in the epic *Baahubali* series, directed by S. S. Rajamouli. His portrayal of Amarendra Baahubali
+                    catapulted him to immense popularity, making him one of the highest-paid actors in India. Known for
+                    his dedication to roles and humble demeanor, Prabhas has continued to expand his career with
+                    pan-Indian releases like *Saaho* and *Radhe Shyam*. His fans appreciate his versatility, hard work,
+                    and down-to-earth personality.
+                </p>
+            </div>
+        </div>
+        <br><br>
+        <div class="container">
+            <div class="table align-items-center " style=" background-color: #f4f4f4; ">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Movie Name</th>
+                            <th scope="col">Budget</th>
+                            <th scope="col">H/F</th>
+                            <th scope="col">Ratings</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">Bahubali</th>
+                            <td>180Cr</td>
+                            <td>H</td>
+                            <td>8.0</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Bahubali2</th>
+                            <td>250Cr</td>
+                            <td>H</td>
+                            <td>8.2</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Mirchi</th>
+                            <td>30Cr</td>
+                            <td>H</td>
+                            <td>7.2</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+    </section>
+
+
+    <section id="hero2" class="">
+        <h1 style="color: #e2f514c8; margin-top: 10vh; margin-left: 20px">Dulquer Salman</h1>
+        <br>
+        <div class="main">
+
+            <div class="image">
+                <img src="images/ds.png" alt="" width="400px" style="border-radius: 10px;">
+            </div>
+            <div class="para" style="color: #f4f4f4;">
+                <p>
+                    Dulquer Salmaan is a popular Indian actor and producer known for his work primarily in Malayalam
+                    cinema, as well as in Tamil, Telugu, and Hindi films. The son of legendary actor Mammootty, Dulquer
+                    has carved his own path with versatile roles and natural charisma. He made his debut in *Second
+                    Show* (2012) and gained recognition with films like *Ustad Hotel*, *Charlie*, *Bangalore Days*, and
+                    *Mahanati*. Dulquer is known for choosing diverse and challenging roles, and his performances have
+                    earned him a large fan base across India. His down-to-earth nature and charm make him one of the
+                    most beloved actors of his generation.
+                </p>
+            </div>
+        </div>
+        <br><br>
+        <div class="container">
+            <div class="table align-items-center " style=" background-color: #f4f4f4; ">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Movie Name</th>
+                            <th scope="col">Budget</th>
+                            <th scope="col">H/F</th>
+                            <th scope="col">Ratings</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">Charlie</th>
+                            <td>6Cr</td>
+                            <td>H</td>
+                            <td>8.0</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Bangalore Days</th>
+                            <td>9Cr</td>
+                            <td>H</td>
+                            <td>8.3</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Mahanati</th>
+                            <td>25Cr</td>
+                            <td>H</td>
+                            <td>8.5</td>
+                        </tr>
+
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+
+
+    </section>
+
+    <div class="button1" style="text-align: center;"><button onclick="herotoggle()"
+            style="background-color: #e2f514c8; color: #00050a; padding: 8px; border-radius: 10px;">Next Actor</button>
+    </div>
+
+    <br><br><br><br>
+
+    <script>
+        function herotoggle() {
+            document.getElementById("hero1").classList.toggle("show");
+            document.getElementById("hero2").classList.toggle("show");
+        }
+    </script>
+
+    <h1 id="genre" style="color: #e2f514c8; margin-left: 20px;">Genre</h1>
+    <div class="container">
+        <br>
+        <div class="row mb-3">
+            <div class="col-4">
+                <img src="images/drama.png" alt="" class="img-fluid"
+                    style="border-radius: 10px; width: 225vw; height: 45vh;">
+            </div>
+            <div class="col-4">
+                <img src="images/action.png" alt="" class="img-fluid"
+                    style="border-radius: 10px; width: 225vw; height: 45vh;">
+            </div>
+            <div class="col-4">
+                <img src="images/comedy.png" alt="" class="img-fluid"
+                    style="border-radius: 10px; width: 225vw; height: 45vh;">
+            </div>
+        </div>
+        <div class="row mb-3">
+            <div class="col-6">
+                <img src="images/crime.png" alt="" class="img-fluid" style="border-radius: 10px; width: 400vw;">
+            </div>
+            <div class="col-6">
+                <img src="images/fam.png" alt="" class="img-fluid" style="border-radius: 10px; width: 400vw;">
+            </div>
+        </div>
+        <div class="row mb-4">
+            <div class="col-3">
+                <img src="images/food.png" alt="" class="img-fluid"
+                    style="border-radius: 10px; width: 170vw; height: 43vh;">
+            </div>
+            <div class="col">
+                <img src="images/s&t.png" alt="" class="img-fluid"
+                    style="border-radius: 10px; width: 346vw; height: 43vh;">
+            </div>
+            <div class="col-3">
+                <img src="images/rom.png" alt="" class="img-fluid"
+                    style="border-radius: 10px; width: 170vw; height: 43vh;">
+            </div>
+        </div>
+    </div>
+
+
+    <footer class="footer text-center">
+        <div class="container-fluid p-4" style="background-color:#141212ef; text-decoration: none;">
+
+            <nav>
+
+                <a href="#" class="footer-link p-3" style="text-decoration: none;color: #e2f514c8;">Home</a> |
+                <a href="#latestmovies" class="footer-link p-3" style="text-decoration: none; color: #e2f514c8;">Latest
+                    Movies</a> |
+                <a href="#trending" class="footer-link p-3"
+                    style="text-decoration: none; color: #e2f514c8;">Trending</a>
+                |
+                <a href="#bollywood" class="footer-link p-3"
+                    style="text-decoration: none; color: #e2f514c8;">Bollywood</a> |
+                <a href="#genre" class="footer-link p-3" style="text-decoration: none; color: #e2f514c8;">Genre</a>
+            </nav>
+            <br>
+            <p class="" style="color: #e2f514c8; ">&copy; 2024 FilmAura. All rights reserved.</p>
+        </div>
+        </div>
+    </footer>
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+       
+
+</body>
+
+</html>
